@@ -46,7 +46,7 @@
             class="w-full px-2 py-3 mx-2 text-lg text-white bg-inherit focus:outline-none sm:py-0"
             placeholder="Recherche..." autocomplete="off" id="search">
           <button type="submit" title="Recherche" @click="searchVisible = !searchVisible" class="px-3">
-            <img src="src/assets/images/loupe.png" alt="Recherche">
+            <img src="./assets/images/loupe.png" alt="Recherche">
           </button>
         </form>
       </div>
