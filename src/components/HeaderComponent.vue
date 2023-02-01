@@ -2,7 +2,7 @@
 
   <header>
     <div>
-      <img src="src/assets/images/test.jpg" class="w-full lg:h-img-header h-img-header-mob" alt="carousel image">
+      <img src="../assets/images/test.jpg" class="w-full lg:h-img-header h-img-header-mob" alt="carousel image">
     </div>
     <div class="container mx-auto">
       <div class="absolute bottom-20 md:bottom-52 lg:bottom-32 xl:bottom-40 p-5 w-full">
