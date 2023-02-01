@@ -36,7 +36,7 @@
         <div class="w-10 p-2 my-4 ml-5 lg:ml-auto lg:my-0 bg-zinc-500 rounded-3xl" v-show="!searchVisible"
           @click="searchVisible = !searchVisible">
           <a href="#" class="my-auto">
-            <img src="src/assets/images/loupe.png" alt="Recherche">
+            <img src="./assets/images/loupe.png" alt="Recherche">
           </a>
         </div>
         <form v-on:submit.prevent="searchMovie" method="get"
