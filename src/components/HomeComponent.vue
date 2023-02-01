@@ -22,7 +22,7 @@
               <div class="absolute top-0 w-full h-full p-2 bg-gradient-to-t from-gray-900 rounded-xl">
                 <div class="text-center top-2/4">
                   <div class="flex w-16 my-2 ml-auto">
-                    <img src="/src/assets/images/star.png" class="my-auto" alt="">
+                    <img src="../assets/images/star.png" class="my-auto" alt="">
                     <p class="mx-2 text-lg text-yellow-400">{{ tendance.vote_average.toFixed(1) }}</p>
                   </div>
                   <p class="text-xl">{{ tendance.title }} {{ tendance.name }}
@@ -39,7 +39,7 @@
                   <div class="flex justify-between my-5">
                     <p class="text-xl text-yellow-400">{{ tendance.media_type }}</p>
                     <div class="flex">
-                      <img src="/src/assets/images/star.png" class="my-auto" alt="">
+                      <img src="../assets/images/star.png" class="my-auto" alt="">
                       <p class="mx-2 text-xl text-yellow-400">{{ tendance.vote_average.toFixed(1) }}</p>
                     </div>
                   </div>
