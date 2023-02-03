@@ -5,7 +5,7 @@ import FooterComponent from '../components/FooterComponent.vue';
 
 <template>
   <DetailComponent :media="media" :detail="detail" :img_backdrop="img_backdrop" :img_poster="img_poster"
-    :video_url="video_url" :video="video" />
+    :video_url="video_url" :video="video" :casts="casts" />
   <FooterComponent />
 </template>
 
@@ -22,6 +22,7 @@ export default {
       video_url: "https://www.youtube.com/embed/",
       detail: [],
       video: [],
+      casts: [],
     }
   },
 
@@ -40,13 +41,21 @@ export default {
           // console.log(Response.data);
           this.video = Response.data.results[0].key;
         });
-    }
+    },
+    getCast: function () {
+      axios.get(`https://api.themoviedb.org/3/${this.media}/${this.id}/credits?api_key=87ef0d000bb1818cfb178b93bd60f415&language=fr-FR`)
+        .then(Response => {
+          // console.log(Response.data);
+          this.casts = Response.data.cast;
+        });
+    },
 
   },
 
   mounted() {
     this.getDetail();
     this.getVideo();
+    this.getCast();
   },
 }
 </script>
