@@ -17,7 +17,7 @@
 
         <div v-for="tendance in tendances" :key="tendance.id">
           <div class="w-56 mx-auto my-5 shadow-xl rounded-2xl">
-            <a href="#">
+            <router-link :to="{ name: 'Detail', params: { media: tendance.media_type, id: tendance.id } }">
               <img :src="img_poster + tendance.poster_path" class="w-56 h-80 rounded-2xl" alt="">
               <div class="absolute top-0 w-full h-full p-2 bg-gradient-to-t from-gray-900 rounded-xl">
                 <div class="text-center top-2/4">
@@ -46,7 +46,7 @@
                   <p class="text-base text-justify">{{ tendance.overview.slice(0, 150) + '...' }}</p>
                 </div>
               </div>
-            </a>
+            </router-link>
           </div>
         </div>
 
