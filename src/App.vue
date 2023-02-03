@@ -2,7 +2,7 @@
   <nav class="w-full bg-opacity-50 bg-neutral-900">
     <div class="container justify-between py-2 mx-auto lg:flex">
       <div class="flex justify-around my-auto lg:w-4/12 xl:w-5/12 lg:justify-start">
-        <router-link to="/" class="text-2xl">MOVIE APP</router-link>
+        <router-link to="/" class="text-2xl hover:text-blue-500">MOVIE APP</router-link>
         <div class="block lg:hidden">
           <button @click="menuVisible = !menuVisible"
             class="flex items-center px-3 py-2 mx-3 text-white border border-white rounded" id="click-menu">
@@ -16,19 +16,19 @@
       <div class="w-full lg:flex" :class="{ 'hidden': menuVisible === false }">
         <div>
           <ul class="my-auto text-xl lg:flex">
-            <li class="mx-5 my-4 lg:my-0">
+            <li class="mx-5 my-4 lg:my-0 hover:text-blue-500">
               <router-link to="/">Accueil</router-link>
             </li>
-            <li class="mx-5 my-4 lg:my-0">
+            <li class="mx-5 my-4 lg:my-0 hover:text-blue-500">
               <router-link to="/">Films</router-link>
             </li>
-            <li class="mx-5 my-4 lg:my-0">
+            <li class="mx-5 my-4 lg:my-0 hover:text-blue-500">
               <router-link to="/">Series</router-link>
             </li>
-            <li class="mx-5 my-4 lg:my-0">
+            <li class="mx-5 my-4 lg:my-0 hover:text-blue-500">
               <router-link to="/">A venir</router-link>
             </li>
-            <li class="mx-5 my-4 lg:my-0">
+            <li class="mx-5 my-4 lg:my-0 hover:text-blue-500">
               <router-link to="/">Acteurs</router-link>
             </li>
           </ul>
