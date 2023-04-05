@@ -1,40 +1,22 @@
 <script setup>
 import ListingComponent from "../components/ListingComponent.vue";
+import ListingSecondComponent from "../components/ListingSecondComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
 </script>
 
 <template>
-  <HeaderComponent
+  <!-- <HeaderComponent
     :listing="listing"
     :img_backdrop="img_backdrop"
     :genresTv="genresTv"
     :genresMovie="genresMovie"
-  />
+  /> -->
 
   <main>
     <div class="container mx-auto">
-      <h2 class="p-20 text-4xl text-center md:text-5xl">
-        Tendances <span v-if="time_window == 'week'"> de la semaine</span>
-        <span v-else>du Jour</span>
-      </h2>
-      <div class="flex mb-10 text-xl">
-        <button
-          class="pt-2 mx-5 border-blue-700 title-font hover:text-blue-700"
-          :class="{ 'border-b-4': time_window == 'week' }"
-          @click="timeWindowWeek"
-        >
-          Cette Semaine
-        </button>
-        <button
-          class="pt-2 mx-5 border-blue-700 title-font hover:text-blue-700"
-          :class="{ 'border-b-4': time_window == 'day' }"
-          @click="timeWindowDay"
-        >
-          Aujourd'hui
-        </button>
-      </div>
-      <ListingComponent
+      <h2 class="p-20 text-4xl text-center md:text-5xl">Film à venir</h2>
+      <ListingSecondComponent
         :page="page"
         :totalPage="totalPage"
         :paginationNumbers="paginationNumbers"
@@ -56,7 +38,6 @@ import axios from "axios";
 export default {
   data() {
     return {
-      time_window: "",
       page: undefined,
       totalPage: undefined,
       genre_id: undefined,
@@ -75,7 +56,7 @@ export default {
     getTendance: function () {
       axios
         .get(
-          `https://api.themoviedb.org/3/trending/all/${this.time_window}?api_key=${this.key}&language=fr-FR&page=${this.page}`
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.key}&language=fr-FR&page=${this.page}`
         )
         .then((response) => {
           // console.log(response.data);
@@ -144,16 +125,6 @@ export default {
       }
     },
 
-    timeWindowDay: function () {
-      this.time_window = "day";
-      this.getTendance();
-    },
-
-    timeWindowWeek: function () {
-      this.time_window = "week";
-      this.getTendance();
-    },
-
     pagination: function (paginationNumber) {
       if (paginationNumber !== "...") {
         this.page = paginationNumber;
@@ -166,7 +137,6 @@ export default {
   mounted() {
     this.page = 1;
     this.n = this.page + 5;
-    this.time_window = "week";
     this.getGenre();
     this.getTendance();
   },
