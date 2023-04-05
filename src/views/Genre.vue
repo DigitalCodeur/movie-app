@@ -5,18 +5,12 @@ import HeaderComponent from "../components/HeaderComponent.vue";
 </script>
 
 <template>
-  <HeaderComponent
-    :listing="listing"
-    :img_backdrop="img_backdrop"
-    :genresTv="genresTv"
-    :genresMovie="genresMovie"
-  />
-
   <main>
     <div class="container mx-auto">
       <h2 class="p-20 text-4xl text-center md:text-5xl">
-        Tendances <span v-if="time_window == 'week'"> de la semaine</span>
-        <span v-else>du Jour</span>
+        <span v-if="this.genre == 'movie'"> Film</span>
+        <span v-else>Série</span><span v-if="time_window == 'week'"> de la semaine</span>
+        <span v-else> du Jour</span>
       </h2>
       <div class="flex mb-10 text-xl">
         <button
@@ -54,6 +48,7 @@ import HeaderComponent from "../components/HeaderComponent.vue";
 import axios from "axios";
 
 export default {
+  props: ["genre"],
   data() {
     return {
       time_window: "",
@@ -62,6 +57,7 @@ export default {
       genre_id: undefined,
       genresTv: [],
       genresMovie: [],
+      type: "movie",
       n: undefined,
       paginationNumbers: [],
       img_backdrop: "https://www.themoviedb.org/t/p/original",
@@ -75,7 +71,7 @@ export default {
     getTendance: function () {
       axios
         .get(
-          `https://api.themoviedb.org/3/trending/all/${this.time_window}?api_key=${this.key}&language=fr-FR&page=${this.page}`
+          `https://api.themoviedb.org/3/trending/${this.genre}/${this.time_window}?api_key=${this.key}&language=fr-FR&page=${this.page}`
         )
         .then((response) => {
           // console.log(response.data);
@@ -83,17 +79,17 @@ export default {
           this.totalPage = response.data.total_pages;
 
           if (this.page === 1) {
-            this.n = this.page + 3;
+            this.n = this.page + 5;
             this.paginationNumbers = [];
           } else if (this.page === 2) {
-            this.n = this.page + 2;
+            this.n = this.page + 3;
             this.paginationNumbers = [this.page - 1];
           } else if (this.page === 3) {
             this.n = this.page + 2;
             this.paginationNumbers = [this.page - 2, this.page - 1];
           } else if (this.page >= 4) {
             this.n = this.page + 2;
-            this.paginationNumbers = [1, "..."];
+            this.paginationNumbers = [1, "...", this.page - 1];
           }
 
           for (let index = this.page; index < this.n && index < 51; index++) {
